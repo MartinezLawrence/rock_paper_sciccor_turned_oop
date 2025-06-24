@@ -24,11 +24,16 @@ class RPSGame:
             'default': {0: [2], 1: [0], 2: [1]}  # Standard RPS
         }
 
-# Method: get_valid_input(prompt, valid_range, exit_code)
-# Loop:
-# Prompt user for input
-# If input is valid or is exit code, return it
-# Else, show error and repeat
+    def get_valid_input(self, prompt, valid_range, exit_code=None):
+        """Get valid integer input from user"""
+        while True:
+            try:
+                choice = int(input(prompt))
+                if choice in valid_range or choice == exit_code:
+                    return choice
+                print(f"Enter a number from {min(valid_range)} to {max(valid_range)}")
+            except ValueError:
+                print("Please enter a valid number")
 
 # Method: check_win(user_choice, machine_choice, mode)
 # Determine what choices user beats (win_against) based on mode
