@@ -54,16 +54,33 @@ class RPSGame:
             
         return result
 
-# Method: get_machine_choice(mode, user_choice, prev_choice, result, ...)
-# If mode is Easy: return random choice
-# If Intermediate:
-# If user repeats choice > 3 times: counter their pattern
-# If user has > 3 wins: copy their previous choice
-# Else: random choice
-# If Expert/Big Bang:
-# If prev_choice exists: update transition matrix, predict next move
-# Else: random choice
-# If Super Hard: always pick move that beats user_choice
+    def get_machine_choice(self, mode, user_choice=None, prev_choice=None, result=None, **kwargs):
+        """Get machine choice based on mode strategy"""
+        max_choice = len(self.modes[mode]['choices']) - 1
+        
+        if mode == 1:  # Easy - Random
+            return random.randint(0, max_choice)
+            
+        elif mode == 2:  # Intermediate - Pattern recognition
+            streak = kwargs.get('streak', 0)
+            wins = kwargs.get('wins', 0)
+            
+            if streak > 3:
+                return (prev_choice - 2) % 3
+            elif wins > 3:
+                return prev_choice
+            else:
+                return random.randint(0, max_choice)
+                
+        elif mode == 3 or mode == 73:  # Expert/Big Bang - Machine learning
+            if prev_choice is not None:
+                self.update_transition_matrix(prev_choice, user_choice, result, mode)
+                return self.predict_choice(prev_choice, mode)
+            return random.randint(0, max_choice)
+            
+        elif mode == 4:  # Super Hard - Always wins
+            return (user_choice - 2) % 3
+
 
 # Method: update_transition_matrix(prev_choice, current_choice, result, mode)
 # Update transition count for (prev_choice, current_choice, result) in matrix
