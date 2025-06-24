@@ -35,12 +35,24 @@ class RPSGame:
             except ValueError:
                 print("Please enter a valid number")
 
-# Method: check_win(user_choice, machine_choice, mode)
-# Determine what choices user beats (win_against) based on mode
-# If machine_choice in win_against: user wins, update stats
-# Else if tie: update stats
-# Else: user loses, update stats
-# Return result string ("Win!", "Tied!", "Lose!")
+    def check_win(self, user_choice, machine_choice, mode):
+        """Determine win/loss/tie and update stats"""
+        if mode == 73:
+            win_against = self.win_conditions[73][user_choice]
+        else:
+            win_against = self.win_conditions['default'][user_choice]
+            
+        if machine_choice in win_against:
+            result = 'Win!'
+            self.stats[mode]['wins'] += 1
+        elif user_choice == machine_choice:
+            result = 'Tied!'
+            self.stats[mode]['ties'] += 1
+        else:
+            result = 'Lose!'
+            self.stats[mode]['losses'] += 1
+            
+        return result
 
 # Method: get_machine_choice(mode, user_choice, prev_choice, result, ...)
 # If mode is Easy: return random choice
