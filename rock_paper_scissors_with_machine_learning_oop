@@ -39,3 +39,16 @@
 # Find most common transitions from prev_choice in matrix
 # If none, return random choice
 # Else, predict user's next likely move and counter it
+
+# Method: play_mode(mode)
+# Set up choices and exit code for mode
+# Initialize prev_choice, streak, wins
+# Print mode info
+# Loop:
+    # Get user_choice (with exit option)
+    # If exit: handle hidden mode if needed, break loop
+    # If Super Hard: print fake machine prediction
+    # Get machine_choice (using strategy)
+    # Check result, print choices and outcome
+    # Update streak and wins for Intermediate mode
+    # Set prev_choice to user_choice
