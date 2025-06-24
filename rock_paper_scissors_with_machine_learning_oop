@@ -31,3 +31,6 @@
 # If prev_choice exists: update transition matrix, predict next move
 # Else: random choice
 # If Super Hard: always pick move that beats user_choice
+
+# Method: update_transition_matrix(prev_choice, current_choice, result, mode)
+# Update transition count for (prev_choice, current_choice, result) in matrix
