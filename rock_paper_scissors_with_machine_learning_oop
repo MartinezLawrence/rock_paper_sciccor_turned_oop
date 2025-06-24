@@ -52,3 +52,8 @@
     # Check result, print choices and outcome
     # Update streak and wins for Intermediate mode
     # Set prev_choice to user_choice
+
+# Method: display_stats(mode=None)
+# If mode given: print stats and win rate for that mode
+# Else: print stats for all modes and hidden mode hint if not found
+
