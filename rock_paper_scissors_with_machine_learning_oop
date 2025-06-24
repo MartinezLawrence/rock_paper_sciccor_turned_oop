@@ -168,9 +168,27 @@ class RPSGame:
                     
             prev_choice = user_choice
 
-# Method: display_stats(mode=None)
-# If mode given: print stats and win rate for that mode
-# Else: print stats for all modes and hidden mode hint if not found
+    def display_stats(self, mode=None):
+        """Display statistics"""
+        if mode:
+            stats = self.stats[mode]
+            total = sum(stats.values())
+            if total > 0:
+                win_rate = stats['wins'] / total * 100
+                print(f"\n{self.modes[mode]['name']} Stats:")
+                print(f"Wins: {stats['wins']}, Losses: {stats['losses']}, Ties: {stats['ties']}")
+                print(f"Win Rate: {win_rate:.1f}%")
+        else:
+            print("\n=== Final Statistics ===")
+            for mode_num, mode_info in self.modes.items():
+                if mode_num in self.stats or (mode_num == 73 and self.hidden_found):
+                    stats = self.stats[mode_num]
+                    total = sum(stats.values())
+                    win_rate = (stats['wins'] / total * 100) if total > 0 else 0
+                    print(f"{mode_info['name']}: {win_rate:.1f}% win rate")
+            
+            if not self.hidden_found:
+                print("YOU NEVER FOUND THE HIDDEN MODE! (Hint: Bazinga!)")
 
 # Method: run()
 # Print welcome and mode info
