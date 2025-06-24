@@ -20,3 +20,14 @@
 # Else if tie: update stats
 # Else: user loses, update stats
 # Return result string ("Win!", "Tied!", "Lose!")
+
+# Method: get_machine_choice(mode, user_choice, prev_choice, result, ...)
+# If mode is Easy: return random choice
+# If Intermediate:
+# If user repeats choice > 3 times: counter their pattern
+# If user has > 3 wins: copy their previous choice
+# Else: random choice
+# If Expert/Big Bang:
+# If prev_choice exists: update transition matrix, predict next move
+# Else: random choice
+# If Super Hard: always pick move that beats user_choice
