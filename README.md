@@ -1,6 +1,6 @@
 # Ultimate Rock Paper Scissor Game Into OOP
 
-This project turns Rock Paper Scissor in more challenging turn. 
+This project turns Rock Paper Scissor into a more challenging turn. 
 This was inspired by a Github creator goelp14. 
 
 In case you guys want to check it out
