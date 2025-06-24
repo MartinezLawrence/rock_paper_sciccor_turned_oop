@@ -133,7 +133,7 @@ class RPSGame:
             if user_choice == exit_code:
                 if mode == 73:
                     self.hidden_found = True
-                    print("\033[1;36m\nThere's just no pleasing you, is there, Leonard?\033[0m")
+                    print("\033[1;36m\nThere's just no pleasing you, is there?\033[0m")
                 break
                 
             # Super Hard mode shows fake prediction
@@ -190,11 +190,34 @@ class RPSGame:
             if not self.hidden_found:
                 print("YOU NEVER FOUND THE HIDDEN MODE! (Hint: Bazinga!)")
 
-# Method: run()
-# Print welcome and mode info
-# Loop:
-# Get mode from user
-# Play selected mode
-# Show stats for mode
-# Ask if play again; if no, show all stats and exit
+    def run(self):
+        """Main game loop"""
+        print(\033[1;36m")
+        print("Welcome to Rock Paper Scissors Ultimate!")
+        print("Modes: 1-Easy, 2-Intermediate, 3-Expert, 4-Super Hard")
+        print("Hidden mode hint: Bazinga!!!")
+        print("\033[0m")
+        
+        while True
+            # Choose mode
+            mode = self.get_valid_input(
+                "Choose mode (1-4) or 73 for hidden mode: ", 
+                [1, 2, 3, 4, 73]
+            )
+            
+            # Play selected mode
+            self.play_mode(mode)
+            self.display_stats(mode)
+            
+            # Play again?
+            while True
+                play_again = input("Play again? (yes/no): ").lower()
+                if play_again in ['yes', 'y']:
+                    break
+                elif play_again in ['no', 'n']:
+                    self.display_stats()
+                    return
+                else:
+                    print("Please enter yes or no")
+
 
