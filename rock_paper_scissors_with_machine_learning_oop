@@ -4,8 +4,12 @@
 # Attributes:
 # stats: tracks wins, losses, ties for each mode
 # transition_matrix: stores user move patterns for prediction
-
 # hidden_found: flag for hidden mode
 # modes: dictionary of game modes and their choices
 # win_conditions: rules for winning in each mode
 
+# Method: get_valid_input(prompt, valid_range, exit_code)
+# Loop:
+# Prompt user for input
+# If input is valid or is exit code, return it
+# Else, show error and repeat
