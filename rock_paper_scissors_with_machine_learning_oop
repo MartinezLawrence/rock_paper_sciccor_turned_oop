@@ -34,3 +34,8 @@
 
 # Method: update_transition_matrix(prev_choice, current_choice, result, mode)
 # Update transition count for (prev_choice, current_choice, result) in matrix
+
+# Method: predict_choice(prev_choice, mode)
+# Find most common transitions from prev_choice in matrix
+# If none, return random choice
+# Else, predict user's next likely move and counter it
