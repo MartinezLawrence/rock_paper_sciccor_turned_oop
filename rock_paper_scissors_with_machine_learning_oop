@@ -220,4 +220,6 @@ class RPSGame:
                 else:
                     print("Please enter yes or no")
 
-
+if __name__ == "__main__":
+    game = RPSGame()
+    game.run()
