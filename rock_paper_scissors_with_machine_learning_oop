@@ -1,12 +1,28 @@
 # Rock Paper Scissors Ultimate Game with Machine Learning
 
-# make a class that implements the game with machine learning 
-# Attributes:
-# stats: tracks wins, losses, ties for each mode
-# transition_matrix: stores user move patterns for prediction
-# hidden_found: flag for hidden mode
-# modes: dictionary of game modes and their choices
-# win_conditions: rules for winning in each mode
+import random
+from collections import defaultdict
+
+class RPSGame:
+    def __init__(self):
+        self.stats = defaultdict(lambda: {'wins': 0, 'losses': 0, 'ties': 0})
+        self.transition_matrix = defaultdict(lambda: defaultdict(int))
+        self.hidden_found = False
+        
+        # Game modes
+        self.modes = {
+            1: {'name': 'Easy', 'choices': ['Rock', 'Paper', 'Scissors']},
+            2: {'name': 'Intermediate', 'choices': ['Rock', 'Paper', 'Scissors']},
+            3: {'name': 'Expert', 'choices': ['Rock', 'Paper', 'Scissors']},
+            4: {'name': 'Super Hard', 'choices': ['Rock', 'Paper', 'Scissors']},
+            73: {'name': 'Big Bang', 'choices': ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']}
+        }
+        
+        # Win conditions for Big Bang Theory rules
+        self.win_conditions = {
+            73: {0: [2, 3], 1: [0, 4], 2: [1, 3], 3: [4, 1], 4: [2, 0]},  # Big Bang
+            'default': {0: [2], 1: [0], 2: [1]}  # Standard RPS
+        }
 
 # Method: get_valid_input(prompt, valid_range, exit_code)
 # Loop:
@@ -64,3 +80,4 @@
 # Play selected mode
 # Show stats for mode
 # Ask if play again; if no, show all stats and exit
+
