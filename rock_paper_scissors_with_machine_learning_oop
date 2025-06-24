@@ -57,3 +57,10 @@
 # If mode given: print stats and win rate for that mode
 # Else: print stats for all modes and hidden mode hint if not found
 
+# Method: run()
+# Print welcome and mode info
+# Loop:
+# Get mode from user
+# Play selected mode
+# Show stats for mode
+# Ask if play again; if no, show all stats and exit
