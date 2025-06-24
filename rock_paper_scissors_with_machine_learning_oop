@@ -54,6 +54,7 @@ class RPSGame:
             
         return result
 
+
     def get_machine_choice(self, mode, user_choice=None, prev_choice=None, result=None, **kwargs):
         """Get machine choice based on mode strategy"""
         max_choice = len(self.modes[mode]['choices']) - 1
@@ -81,9 +82,10 @@ class RPSGame:
         elif mode == 4:  # Super Hard - Always wins
             return (user_choice - 2) % 3
 
-
-# Method: update_transition_matrix(prev_choice, current_choice, result, mode)
-# Update transition count for (prev_choice, current_choice, result) in matrix
+    def update_transition_matrix(self, prev_choice, current_choice, result, mode):
+        """Update transition matrix for machine learning"""
+        key = f"{prev_choice}-{current_choice}-{result}"
+        self.transition_matrix[mode][key] += 1
 
 # Method: predict_choice(prev_choice, mode)
 # Find most common transitions from prev_choice in matrix
