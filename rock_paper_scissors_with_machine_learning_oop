@@ -13,3 +13,10 @@
 # Prompt user for input
 # If input is valid or is exit code, return it
 # Else, show error and repeat
+
+# Method: check_win(user_choice, machine_choice, mode)
+# Determine what choices user beats (win_against) based on mode
+# If machine_choice in win_against: user wins, update stats
+# Else if tie: update stats
+# Else: user loses, update stats
+# Return result string ("Win!", "Tied!", "Lose!")
